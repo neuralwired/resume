@@ -6,7 +6,8 @@
   <title>Anubhav Kesarwani - Resume</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=CMU+Serif:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  
   <style>
     .resume-container {
       font-family: 'Cormorant Garamond', Garamond;
@@ -21,21 +22,59 @@
       margin: 0;
       padding: 0;
     }
+    
     .resume-container {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 40px auto; 
       background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      padding: 40px 36px 32px 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.08);
+      padding: 30px 36px; 
       border-radius: 8px;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    .resume-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.18), 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    @media print {
+      .resume-container {
+        margin: 0 auto;
+        padding: 0 36px; 
+        box-shadow: none;
+        max-width: 100%;
+        transform: none;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .resume-header {
+        padding-top: 5px; 
+      }
+      
+      .section {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      
+      .resume-item {
+        margin-bottom: 6px; 
+      }
+    }
+    
     .resume-header {
       text-align: center;
       margin-bottom: 0;
       margin-top: 0;
     }
     .resume-header h1 {
-      font-family: 'CMU Serif';
+      font-family: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
       font-size: 2.5em;
       margin: 0;
       font-weight: bold;
@@ -115,10 +154,12 @@
       padding-left: 15px;
       margin-bottom: 2px;
       text-indent: -25px;
+      text-align: left;
     }
     .item-details li::before {
       content: "•";
       margin-right: 5px;
+      font-size: 0.9em; 
     }
     .skills-list {
       margin-left: 18px;
@@ -137,8 +178,10 @@
     @media (max-width: 600px) {
       .resume-container {
         max-width: 100vw;
-        padding: 4vw 2vw;
+        margin: 20px 15px; 
+        padding: 20px 15px; 
         font-size: 0.75em;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
       }
       .item-header, .item-subheader {
         flex-direction: row;
@@ -154,10 +197,44 @@
         margin-left: -30px;
       }
     }
+
+    .print-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #222;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
+    }
+    
+    .print-button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+    
+    .print-button i {
+      font-size: 24px;
+    }
+    
+    @media print {
+      .print-button {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="resume-container">
+  <div class="resume-container" id="resume-container">
     <div class="resume-header">
       <h1>Anubhav Kesarwani</h1>
       <div class="contact-info">
@@ -177,7 +254,7 @@
             <span>Nov. 2022 &mdash; Present</span>
           </div>
           <div class="item-subheader">
-            Bachelor of Technology in Computer Science & Engineering
+            B.Tech in Computer Science & Engineering
             <span>Prayagraj, India</span>
           </div>
         </li>
@@ -305,5 +382,15 @@
       </ul>
     </div>
   </div>
+  
+  <button class="print-button" id="printButton" title="Print Resume">
+    <i class="fas fa-print"></i>
+  </button>
+
+  <script>
+    document.getElementById('printButton').addEventListener('click', function() {
+      window.print();
+    });
+  </script>
 </body>
 </html>
