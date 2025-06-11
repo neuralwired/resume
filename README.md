@@ -1,2 +1,2 @@
 # my resume
-## [rulercosta/resume](https://rulercosta.github.io/resume)
+## [neuralwired/resume](https://neuralwired.github.io/resume)
